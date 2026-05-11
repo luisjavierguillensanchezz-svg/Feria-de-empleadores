@@ -1,252 +1,279 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feria de Empleadores 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
+<title>Feria de Empleadores UV</title>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, Helvetica, sans-serif;
-    }
+<style>
 
-    body{
-      background:#f2f5fb;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:100vh;
-      padding:20px;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
 
-    .container{
-      width:100%;
-      max-width:700px;
-      background:white;
-      border-radius:20px;
-      padding:35px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    }
+body{
+  background:#f2f5fb;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
 
-    .title{
-      text-align:center;
-      margin-bottom:30px;
-    }
+.container{
+  width:100%;
+  max-width:700px;
+  background:white;
+  border-radius:22px;
+  padding:35px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
 
-    .title h1{
-      color:#0b3d91;
-      font-size:2rem;
-      margin-bottom:10px;
-    }
+.header{
+  text-align:center;
+  margin-bottom:30px;
+}
 
-    .title p{
-      color:#555;
-    }
+.header h1{
+  color:#0b3d91;
+  margin-bottom:10px;
+}
 
-    .tabs{
-      display:flex;
-      gap:10px;
-      margin-bottom:25px;
-    }
+.header p{
+  color:#555;
+}
 
-    .tab{
-      flex:1;
-      padding:15px;
-      border:none;
-      border-radius:12px;
-      cursor:pointer;
-      background:#dfe8f7;
-      font-weight:bold;
-      transition:0.3s;
-    }
+.tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:25px;
+}
 
-    .tab.active{
-      background:#0b3d91;
-      color:white;
-    }
+.tab{
+  flex:1;
+  border:none;
+  padding:15px;
+  border-radius:12px;
+  background:#dfe8f7;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
 
-    form{
-      display:none;
-    }
+.tab.active{
+  background:#0b3d91;
+  color:white;
+}
 
-    form.active{
-      display:block;
-    }
+form{
+  display:none;
+}
 
-    .group{
-      margin-bottom:18px;
-    }
+form.active{
+  display:block;
+}
 
-    label{
-      display:block;
-      margin-bottom:8px;
-      font-weight:bold;
-      color:#333;
-    }
+.group{
+  margin-bottom:18px;
+}
 
-    input, select{
-      width:100%;
-      padding:14px;
-      border-radius:10px;
-      border:1px solid #ccc;
-      font-size:1rem;
-    }
+label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:bold;
+  color:#333;
+}
 
-    button.submit{
-      width:100%;
-      padding:16px;
-      border:none;
-      background:#0b3d91;
-      color:white;
-      border-radius:12px;
-      font-size:1rem;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.3s;
-    }
+input, select{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:1rem;
+}
 
-    button.submit:hover{
-      background:#072c69;
-    }
+.submit{
+  width:100%;
+  border:none;
+  padding:16px;
+  border-radius:12px;
+  background:#0b3d91;
+  color:white;
+  font-size:1rem;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
 
-    button.submit:disabled{
-      opacity:0.7;
-      cursor:not-allowed;
-    }
+.submit:hover{
+  background:#072c69;
+}
 
-    .success{
-      display:none;
-      text-align:center;
-      margin-top:25px;
-      padding:25px;
-      background:#eaffef;
-      border:2px solid #7ad79a;
-      border-radius:15px;
-    }
+.submit:disabled{
+  opacity:0.7;
+  cursor:not-allowed;
+}
 
-    .folio{
-      font-size:2rem;
-      font-weight:bold;
-      color:#0b3d91;
-      margin-top:15px;
-    }
+.success{
+  display:none;
+  margin-top:25px;
+  text-align:center;
+  padding:30px;
+  background:#ecfff1;
+  border:2px solid #8ce3aa;
+  border-radius:18px;
+}
 
-    .note{
-      margin-top:15px;
-      color:#555;
-    }
+.folio{
+  font-size:3rem;
+  font-weight:bold;
+  color:#0b3d91;
+  margin-top:15px;
+}
 
-  </style>
+.note{
+  margin-top:15px;
+  color:#666;
+}
+
+.counter{
+  text-align:center;
+  margin-bottom:20px;
+  color:#555;
+  font-weight:bold;
+}
+
+</style>
 </head>
+
 <body>
 
 <div class="container">
 
-  <div class="title">
-    <h1>FERIA DE EMPLEADORES 2026</h1>
-    <p>Universidad Veracruzana - Ingenierías</p>
-  </div>
+<div class="header">
+  <h1>FERIA DE EMPLEADORES 2026</h1>
+  <p>Universidad Veracruzana - Ingenierías</p>
+</div>
 
-  <div class="tabs">
+<div class="counter">
+  Registro oficial del evento
+</div>
 
-    <button class="tab active" onclick="showForm('student')">
-      Alumno
-    </button>
+<div class="tabs">
 
-    <button class="tab" onclick="showForm('company')">
-      Empresa
-    </button>
+<button class="tab active"
+onclick="showForm('student')">
+Alumno
+</button>
 
-  </div>
+<button class="tab"
+onclick="showForm('company')">
+Empresa
+</button>
 
-  <!-- FORMULARIO ALUMNOS -->
-  <form id="studentForm" class="active">
+</div>
 
-    <div class="group">
-      <label>Nombre completo</label>
-      <input type="text" required>
-    </div>
+<!-- ALUMNOS -->
+<form id="studentForm" class="active">
 
-    <div class="group">
-      <label>Matrícula</label>
-      <input type="text" required>
-    </div>
+<div class="group">
+<label>Nombre completo</label>
+<input type="text" required>
+</div>
 
-    <div class="group">
-      <label>Correo UV</label>
-      <input type="email" required>
-    </div>
+<div class="group">
+<label>Matrícula</label>
+<input type="text" required>
+</div>
 
-    <div class="group">
-      <label>Facultad</label>
+<div class="group">
+<label>Correo UV</label>
+<input type="email" required>
+</div>
 
-      <select required>
-        <option value="">Selecciona</option>
-        <option>FIEE</option>
-        <option>FCQ</option>
-        <option>FIMCN</option>
-        <option>FICH</option>
-        <option>Otra</option>
-      </select>
-    </div>
+<div class="group">
+<label>Facultad</label>
 
-    <div class="group">
-      <label>Carrera</label>
-      <input type="text" required>
-    </div>
+<select required>
+<option value="">Selecciona</option>
+<option>FIEE</option>
+<option>FCQ</option>
+<option>FIMCN</option>
+<option>FICH</option>
+<option>Otra</option>
+</select>
 
-    <button type="submit" class="submit">
-      Registrarme
-    </button>
+</div>
 
-  </form>
+<div class="group">
+<label>Carrera</label>
 
-  <!-- FORMULARIO EMPRESAS -->
-  <form id="companyForm">
+<select required>
+<option value="">Selecciona</option>
+<option>Ingeniería Mecatrónica</option>
+<option>Ingeniería Eléctrica</option>
+<option>Ingeniería Electrónica</option>
+<option>Ingeniería Mecánica</option>
+<option>Ingeniería Química</option>
+<option>Ingeniería Civil</option>
+<option>Otra</option>
+</select>
 
-    <div class="group">
-      <label>Empresa</label>
-      <input type="text" required>
-    </div>
+</div>
 
-    <div class="group">
-      <label>Representante</label>
-      <input type="text" required>
-    </div>
+<button type="submit" class="submit">
+Registrarme
+</button>
 
-    <div class="group">
-      <label>Correo</label>
-      <input type="email" required>
-    </div>
+</form>
 
-    <button type="submit" class="submit">
-      Registrar empresa
-    </button>
+<!-- EMPRESAS -->
+<form id="companyForm">
 
-  </form>
+<div class="group">
+<label>Empresa</label>
+<input type="text" required>
+</div>
 
-  <!-- MENSAJE -->
-  <div class="success" id="successBox">
+<div class="group">
+<label>Representante</label>
+<input type="text" required>
+</div>
 
-    <h2>¡Registro exitoso!</h2>
+<div class="group">
+<label>Correo empresarial</label>
+<input type="email" required>
+</div>
 
-    <p id="successMessage">
-      Tu folio para la tómbola es:
-    </p>
+<button type="submit" class="submit">
+Registrar empresa
+</button>
 
-    <div class="folio" id="folioText">
-      AL-001
-    </div>
+</form>
 
-    <div class="note">
-      Guarda esta información.
-    </div>
+<!-- MENSAJE -->
+<div class="success" id="successBox">
 
-  </div>
+<h2>¡Registro exitoso!</h2>
+
+<p id="successMessage">
+Tu folio para la tómbola es:
+</p>
+
+<div class="folio" id="folioText">
+UV-001
+</div>
+
+<div class="note">
+Toma captura o guarda tu folio.
+</div>
+
+</div>
 
 </div>
 
@@ -287,121 +314,164 @@ function showForm(type){
     .style.display = "none";
 }
 
-// REGISTRO ALUMNOS
+// ALUMNOS
 document.getElementById("studentForm")
-  .addEventListener("submit", async function(e){
+.addEventListener("submit", async function(e){
 
-    e.preventDefault();
+e.preventDefault();
 
-    const submitButton =
-      this.querySelector(".submit");
+const submitButton =
+  this.querySelector(".submit");
 
-    submitButton.disabled = true;
-    submitButton.innerText = "Registrando...";
+submitButton.disabled = true;
+submitButton.innerText = "Registrando...";
 
-    const inputs =
-      this.querySelectorAll("input, select");
+const inputs =
+  this.querySelectorAll("input, select");
 
-    const data = {
-      tipo:"alumno",
-      nombre:inputs[0].value,
-      matricula:inputs[1].value,
-      correo:inputs[2].value,
-      facultad:inputs[3].value,
-      carrera:inputs[4].value
-    };
+const correo =
+  inputs[2].value.trim().toLowerCase();
 
-    try{
+// VALIDAR CORREO UV
+if(
+ !correo.endsWith("@estudiantes.uv.mx")
+ &&
+ !correo.endsWith("@uv.mx")
+){
 
-      const response = await fetch(API_URL,{
-        method:"POST",
-        body:JSON.stringify(data)
-      });
+ alert("Ingresa un correo UV válido");
 
-      const result = await response.json();
+ submitButton.disabled = false;
+ submitButton.innerText = "Registrarme";
 
-      document.getElementById("successMessage")
-        .innerText = "Tu folio para la tómbola es:";
+ return;
+}
 
-      document.getElementById("folioText")
-        .innerText = result.folio;
+const data = {
+  tipo:"alumno",
+  nombre:inputs[0].value,
+  matricula:inputs[1].value,
+  correo:correo,
+  facultad:inputs[3].value,
+  carrera:inputs[4].value
+};
 
-      document.getElementById("successBox")
-        .style.display = "block";
+try{
 
-      this.reset();
+const response = await fetch(API_URL,{
+  method:"POST",
+  body:JSON.stringify(data)
+});
 
-      window.scrollTo({
-        top:document.body.scrollHeight,
-        behavior:'smooth'
-      });
+const result =
+  await response.json();
 
-    }catch(error){
+if(result.status === "duplicado_matricula"){
 
-      alert("Error al registrar");
-      console.error(error);
+  alert("Esta matrícula ya fue registrada");
 
-    }
+  submitButton.disabled = false;
+  submitButton.innerText = "Registrarme";
 
-    submitButton.disabled = false;
-    submitButton.innerText = "Registrarme";
+  return;
+}
+
+if(result.status === "duplicado_correo"){
+
+  alert("Este correo ya fue registrado");
+
+  submitButton.disabled = false;
+  submitButton.innerText = "Registrarme";
+
+  return;
+}
+
+document.getElementById("successMessage")
+  .innerText =
+  "Tu folio para la tómbola es:";
+
+document.getElementById("folioText")
+  .innerText =
+  result.folio;
+
+document.getElementById("successBox")
+  .style.display = "block";
+
+this.reset();
+
+window.scrollTo({
+  top:document.body.scrollHeight,
+  behavior:"smooth"
+});
+
+}catch(error){
+
+alert("Error al registrar");
+console.error(error);
+
+}
+
+submitButton.disabled = false;
+submitButton.innerText = "Registrarme";
 
 });
 
-// REGISTRO EMPRESAS
+// EMPRESAS
 document.getElementById("companyForm")
-  .addEventListener("submit", async function(e){
+.addEventListener("submit", async function(e){
 
-    e.preventDefault();
+e.preventDefault();
 
-    const submitButton =
-      this.querySelector(".submit");
+const submitButton =
+  this.querySelector(".submit");
 
-    submitButton.disabled = true;
-    submitButton.innerText = "Registrando...";
+submitButton.disabled = true;
+submitButton.innerText = "Registrando...";
 
-    const inputs =
-      this.querySelectorAll("input");
+const inputs =
+  this.querySelectorAll("input");
 
-    const data = {
-      tipo:"empresa",
-      empresa:inputs[0].value,
-      representante:inputs[1].value,
-      correo:inputs[2].value
-    };
+const data = {
+  tipo:"empresa",
+  empresa:inputs[0].value,
+  representante:inputs[1].value,
+  correo:inputs[2].value
+};
 
-    try{
+try{
 
-      await fetch(API_URL,{
-        method:"POST",
-        body:JSON.stringify(data)
-      });
+await fetch(API_URL,{
+  method:"POST",
+  body:JSON.stringify(data)
+});
 
-      document.getElementById("successMessage")
-        .innerText = "Registro de empresa completado.";
+document.getElementById("successMessage")
+  .innerText =
+  "Registro de empresa completado.";
 
-      document.getElementById("folioText")
-        .innerText = "Gracias por participar";
+document.getElementById("folioText")
+  .innerText =
+  "Gracias por participar";
 
-      document.getElementById("successBox")
-        .style.display = "block";
+document.getElementById("successBox")
+  .style.display = "block";
 
-      this.reset();
+this.reset();
 
-      window.scrollTo({
-        top:document.body.scrollHeight,
-        behavior:'smooth'
-      });
+window.scrollTo({
+  top:document.body.scrollHeight,
+  behavior:"smooth"
+});
 
-    }catch(error){
+}catch(error){
 
-      alert("Error al registrar");
-      console.error(error);
+alert("Error al registrar");
+console.error(error);
 
-    }
+}
 
-    submitButton.disabled = false;
-    submitButton.innerText = "Registrar empresa";
+submitButton.disabled = false;
+submitButton.innerText = "Registrar empresa";
 
 });
 
@@ -409,3 +479,4 @@ document.getElementById("companyForm")
 
 </body>
 </html>
+```
