@@ -228,14 +228,16 @@
 
     <h2>¡Registro exitoso!</h2>
 
-    <p>Tu folio para la tómbola es:</p>
+    <p id="successMessage">
+      Tu folio para la tómbola es:
+    </p>
 
     <div class="folio" id="folioText">
       AL-001
     </div>
 
     <div class="note">
-      Guarda este folio para participar.
+      Guarda esta información.
     </div>
 
   </div>
@@ -246,10 +248,6 @@
 
   let studentCounter = localStorage.getItem("studentCounter")
     ? parseInt(localStorage.getItem("studentCounter"))
-    : 0;
-
-  let companyCounter = localStorage.getItem("companyCounter")
-    ? parseInt(localStorage.getItem("companyCounter"))
     : 0;
 
   function showForm(type){
@@ -285,6 +283,7 @@
       .style.display = "none";
   }
 
+  // REGISTRO ALUMNOS
   document.getElementById("studentForm")
     .addEventListener("submit", function(e){
 
@@ -296,6 +295,9 @@
 
       const folio =
         "AL-" + String(studentCounter).padStart(3,'0');
+
+      document.getElementById("successMessage")
+        .innerText = "Tu folio para la tómbola es:";
 
       document.getElementById("folioText")
         .innerText = folio;
@@ -312,20 +314,17 @@
 
     });
 
+  // REGISTRO EMPRESAS
   document.getElementById("companyForm")
     .addEventListener("submit", function(e){
 
       e.preventDefault();
 
-      companyCounter++;
-
-      localStorage.setItem("companyCounter", companyCounter);
-
-      const folio =
-        "EMP-" + String(companyCounter).padStart(3,'0');
+      document.getElementById("successMessage")
+        .innerText = "Registro de empresa completado.";
 
       document.getElementById("folioText")
-        .innerText = folio;
+        .innerText = "Gracias por participar";
 
       document.getElementById("successBox")
         .style.display = "block";
