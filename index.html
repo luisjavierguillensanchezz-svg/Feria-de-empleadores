@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feria de Empleadores 2026</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#f2f5fb;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      padding:20px;
+    }
+
+    .container{
+      width:100%;
+      max-width:700px;
+      background:white;
+      border-radius:20px;
+      padding:35px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .title h1{
+      color:#0b3d91;
+      font-size:2rem;
+      margin-bottom:10px;
+    }
+
+    .title p{
+      color:#555;
+    }
+
+    .tabs{
+      display:flex;
+      gap:10px;
+      margin-bottom:25px;
+    }
+
+    .tab{
+      flex:1;
+      padding:15px;
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      background:#dfe8f7;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .tab.active{
+      background:#0b3d91;
+      color:white;
+    }
+
+    form{
+      display:none;
+    }
+
+    form.active{
+      display:block;
+    }
+
+    .group{
+      margin-bottom:18px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:bold;
+      color:#333;
+    }
+
+    input, select{
+      width:100%;
+      padding:14px;
+      border-radius:10px;
+      border:1px solid #ccc;
+      font-size:1rem;
+    }
+
+    button.submit{
+      width:100%;
+      padding:16px;
+      border:none;
+      background:#0b3d91;
+      color:white;
+      border-radius:12px;
+      font-size:1rem;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    button.submit:hover{
+      background:#072c69;
+    }
+
+    .success{
+      display:none;
+      text-align:center;
+      margin-top:25px;
+      padding:25px;
+      background:#eaffef;
+      border:2px solid #7ad79a;
+      border-radius:15px;
+    }
+
+    .folio{
+      font-size:2rem;
+      font-weight:bold;
+      color:#0b3d91;
+      margin-top:15px;
+    }
+
+    .note{
+      margin-top:15px;
+      color:#555;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="title">
+    <h1>FERIA DE EMPLEADORES 2026</h1>
+    <p>Universidad Veracruzana - Ingenierías</p>
+  </div>
+
+  <div class="tabs">
+
+    <button class="tab active" onclick="showForm('student')">
+      Alumno
+    </button>
+
+    <button class="tab" onclick="showForm('company')">
+      Empresa
+    </button>
+
+  </div>
+
+  <!-- FORMULARIO ALUMNO -->
+  <form id="studentForm" class="active">
+
+    <div class="group">
+      <label>Nombre completo</label>
+      <input type="text" required>
+    </div>
+
+    <div class="group">
+      <label>Matrícula</label>
+      <input type="text" required>
+    </div>
+
+    <div class="group">
+      <label>Correo UV</label>
+      <input type="email" required>
+    </div>
+
+    <div class="group">
+      <label>Facultad</label>
+
+      <select required>
+        <option value="">Selecciona</option>
+        <option>FIEE</option>
+        <option>FCQ</option>
+        <option>FIMCN</option>
+        <option>FICH</option>
+        <option>Otra</option>
+      </select>
+    </div>
+
+    <div class="group">
+      <label>Carrera</label>
+      <input type="text" required>
+    </div>
+
+    <button type="submit" class="submit">
+      Registrarme
+    </button>
+
+  </form>
+
+  <!-- FORMULARIO EMPRESA -->
+  <form id="companyForm">
+
+    <div class="group">
+      <label>Empresa</label>
+      <input type="text" required>
+    </div>
+
+    <div class="group">
+      <label>Representante</label>
+      <input type="text" required>
+    </div>
+
+    <div class="group">
+      <label>Correo</label>
+      <input type="email" required>
+    </div>
+
+    <button type="submit" class="submit">
+      Registrar empresa
+    </button>
+
+  </form>
+
+  <!-- MENSAJE -->
+  <div class="success" id="successBox">
+
+    <h2>¡Registro exitoso!</h2>
+
+    <p>Tu folio para la tómbola es:</p>
+
+    <div class="folio" id="folioText">
+      AL-001
+    </div>
+
+    <div class="note">
+      Guarda este folio para participar.
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+  let studentCounter = localStorage.getItem("studentCounter")
+    ? parseInt(localStorage.getItem("studentCounter"))
+    : 0;
+
+  let companyCounter = localStorage.getItem("companyCounter")
+    ? parseInt(localStorage.getItem("companyCounter"))
+    : 0;
+
+  function showForm(type){
+
+    document.getElementById("studentForm")
+      .classList.remove("active");
+
+    document.getElementById("companyForm")
+      .classList.remove("active");
+
+    document.querySelectorAll(".tab")
+      .forEach(btn => btn.classList.remove("active"));
+
+    if(type === "student"){
+
+      document.getElementById("studentForm")
+        .classList.add("active");
+
+      document.querySelectorAll(".tab")[0]
+        .classList.add("active");
+
+    }else{
+
+      document.getElementById("companyForm")
+        .classList.add("active");
+
+      document.querySelectorAll(".tab")[1]
+        .classList.add("active");
+
+    }
+
+    document.getElementById("successBox")
+      .style.display = "none";
+  }
+
+  document.getElementById("studentForm")
+    .addEventListener("submit", function(e){
+
+      e.preventDefault();
+
+      studentCounter++;
+
+      localStorage.setItem("studentCounter", studentCounter);
+
+      const folio =
+        "AL-" + String(studentCounter).padStart(3,'0');
+
+      document.getElementById("folioText")
+        .innerText = folio;
+
+      document.getElementById("successBox")
+        .style.display = "block";
+
+      this.reset();
+
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior:'smooth'
+      });
+
+    });
+
+  document.getElementById("companyForm")
+    .addEventListener("submit", function(e){
+
+      e.preventDefault();
+
+      companyCounter++;
+
+      localStorage.setItem("companyCounter", companyCounter);
+
+      const folio =
+        "EMP-" + String(companyCounter).padStart(3,'0');
+
+      document.getElementById("folioText")
+        .innerText = folio;
+
+      document.getElementById("successBox")
+        .style.display = "block";
+
+      this.reset();
+
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior:'smooth'
+      });
+
+    });
+
+</script>
+
+</body>
+</html>
